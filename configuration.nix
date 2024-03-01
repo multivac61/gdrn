@@ -94,8 +94,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Place GitHub Access token under ~/.config/nix/nix.conf: access-tokens = github.com=***censored***
   nix.settings.experimental-features = lib.mkDefault "nix-command flakes";
-  nix.extraOptions = "extra-access-tokens = github.com=$(${lib.getExe pkgs.gh} auth token)";
 
   virtualisation.docker.enable = true;
 
