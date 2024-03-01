@@ -6,7 +6,7 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, nixos-hardware }: rec {
+  outputs = { self, nixpkgs, nixos-hardware, disko }: rec {
     nixosConfigurations = rec {
       gdrn = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
