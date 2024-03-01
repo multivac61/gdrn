@@ -1,14 +1,18 @@
 _: {
   disko.devices = {
     disk = {
-      vdb = {
-        device = "/dev/disk/by-path/pci-0000:01:00.0-nvme-1";
+      main = {
         type = "disk";
+        device = "/dev/disk/by-id/nvme-Samsung_SSD_980_PRO_2TB_S6B0NU0W995256X";
         content = {
           type = "gpt";
           partitions = {
+            boot = {
+              size = "1M";
+              type = "EF02"; # for grub MBR
+            };
             ESP = {
-              end = "500M";
+              size = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -17,11 +21,10 @@ _: {
               };
             };
             root = {
-              name = "root";
-              end = "-0";
+              size = "100%";
               content = {
                 type = "filesystem";
-                format = "bcachefs";
+                format = "ext4";
                 mountpoint = "/";
               };
             };
