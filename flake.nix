@@ -23,7 +23,6 @@
           nixos-hardware.nixosModules.common-pc-ssd
           "${nixpkgs}/nixos/modules/profiles/minimal.nix"
           ./configuration.nix
-          ./base.nix
         ];
       };
     };
