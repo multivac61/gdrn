@@ -44,18 +44,18 @@
   };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
 
   # Enable te GNOME Desktop Environment.
-  # services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.gdm.autoSuspend = false;
-  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.autoSuspend = false;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  # services.xserver = {
-  #   layout = "us";
-  #   xkbVariant = "";
-  # };
+  services.xserver = {
+    layout = "us";
+    xkbVariant = "";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -87,6 +87,7 @@
     extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
+      quickemu
       #  thunderbird
     ];
   };
@@ -98,6 +99,7 @@
   nix.settings.experimental-features = lib.mkDefault "nix-command flakes";
 
   virtualisation.docker.enable = true;
+  virtualisation.multipass.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
