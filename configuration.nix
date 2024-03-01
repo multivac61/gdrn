@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports =
@@ -92,6 +92,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+
+  nix.settings.experimental-features = lib.mkDefault "nix-command flakes";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
