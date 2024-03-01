@@ -12,16 +12,16 @@
         system = "x86_64-linux";
         modules = [
 
-          disko.nixosModules.disko
-          (import ./disk.nix { })
+          # disko.nixosModules.disko
+          # (import ./disk.nix { })
 
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-cpu-amd-pstate
-          nixos-hardware.nixosModules.common-gpu-amd
-          nixos-hardware.nixosModules.common-hidpi
-          nixos-hardware.nixosModules.common-pc
-          nixos-hardware.nixosModules.common-pc-ssd
-          "${nixpkgs}/nixos/modules/profiles/minimal.nix"
+          # nixos-hardware.nixosModules.common-cpu-amd
+          # nixos-hardware.nixosModules.common-cpu-amd-pstate
+          # nixos-hardware.nixosModules.common-gpu-amd
+          # nixos-hardware.nixosModules.common-hidpi
+          # nixos-hardware.nixosModules.common-pc
+          # nixos-hardware.nixosModules.common-pc-ssd
+          # "${nixpkgs}/nixos/modules/profiles/minimal.nix"
           ./configuration.nix
         ];
       };
