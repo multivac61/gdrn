@@ -95,6 +95,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings.experimental-features = lib.mkDefault "nix-command flakes";
+  nix.extraOptions = "extra-access-tokens = github.com=$(${lib.getExe pkgs.gh} auth token)";
 
   virtualisation.docker.enable = true;
 
