@@ -83,7 +83,7 @@
   users.users.genki = {
     isNormalUser = true;
     description = "genki";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       firefox
       #  thunderbird
@@ -93,8 +93,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
   nix.settings.experimental-features = lib.mkDefault "nix-command flakes";
+
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
