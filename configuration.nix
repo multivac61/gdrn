@@ -31,4 +31,11 @@
       grub.enable = lib.mkDefault false;
     };
   };
+  # disk with this label on first boot. Therefore, we need to keep it. It is the
+  # only information from the installer image that we need to keep persistent
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+    };
 }
