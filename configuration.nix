@@ -15,7 +15,7 @@
     };
   };
   networking = {
-    networking.hostName = "gdrn";
+    hostName = "gdrn";
     firewall.enable = true;
     networkmanager.enable = lib.mkForce false;
     interfaces.enp11s0.useDHCP = true;
