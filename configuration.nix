@@ -24,4 +24,11 @@
     experimental-features = lib.mkDefault "nix-command flakes";
     trusted-users = [ "root" "@wheel" ];
   };
+  boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_testing;
+    loader = {
+      generic-extlinux-compatible.enable = lib.mkDefault true;
+      grub.enable = lib.mkDefault false;
+    };
+  };
 }
