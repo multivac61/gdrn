@@ -9,11 +9,20 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./nix-serve.nix
+      ./common.nix
+      # ./llama.nix
     ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Emulate arm64 binaries
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  # Kernel
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "gdrn"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -48,13 +57,26 @@
 
   # Enable te GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
+
+  # System is a server, don't let it sleep
   services.xserver.displayManager.gdm.autoSuspend = false;
+  services.xserver.displayManager.gdm.settings = {
+      "org/gnome/settings-daemon/plugins/power" = {
+      sleep-inactive-ac-timeout = 0;
+      sleep-inactive-battery-timeout = 0;
+    };
+  };
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+
   services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Enable CUPS to print documents.
@@ -121,6 +143,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
