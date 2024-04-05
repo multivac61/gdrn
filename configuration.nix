@@ -146,6 +146,10 @@
 
   networking.firewall.allowedTCPPorts = [ 8080 ];
 
+  # Enable tailscale. We manually authenticate when we want with "sudo tailscale up". 
+  # If you don't use tailscale, you should comment out or delete all of this.
+  services.tailscale.enable = true;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
