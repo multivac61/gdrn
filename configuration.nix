@@ -61,7 +61,7 @@
   # System is a server, don't let it sleep
   services.xserver.displayManager.gdm.autoSuspend = false;
   services.xserver.displayManager.gdm.settings = {
-      "org/gnome/settings-daemon/plugins/power" = {
+    "org/gnome/settings-daemon/plugins/power" = {
       sleep-inactive-ac-timeout = 0;
       sleep-inactive-battery-timeout = 0;
     };
